@@ -12,6 +12,8 @@ Employee attrition carries significant hiring, training, and productivity costs.
 
   ## Dashboard Screenshots
 ![Overview](overview.png)
+![Attrition Drivers](attrition-drivers.png)
+
 
 ## Recommendations
 - Review overtime policies in high-attrition departments, particularly Sales.
