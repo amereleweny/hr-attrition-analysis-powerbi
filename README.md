@@ -11,8 +11,7 @@ Employee attrition carries significant hiring, training, and productivity costs.
 - **DAX Measures:** 10 calculated measures including attrition rate, average tenure by department, overtime attrition ratio, and salary band attrition rate
 
   ## Dashboard Screenshots
-![Overview](screenshots/overview.png)
-![Attrition Drivers](screenshots/attrition-drivers.png)
+![Overview](overview.png)
 
 ## Recommendations
 - Review overtime policies in high-attrition departments, particularly Sales.
