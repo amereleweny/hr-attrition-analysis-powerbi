@@ -1,0 +1,29 @@
+AttritionbySatisfactionLevel = DIVIDE(CALCULATE(COUNTROWS(Fact_Employee), Dim_Satisfaction[JobSatisfaction] <=2, Fact_Employee[AttritionFlag] =1), CALCULATE(COUNTROWS(Fact_Employee), Dim_Satisfaction[JobSatisfaction] <=2),0)
+
+AttritionRate = DIVIDE(CALCULATE(COUNTROWS(Fact_Employee), Fact_Employee[AttritionFlag]= 1), COUNTROWS(Fact_Employee))
+
+AvgJobSatisfaction = AVERAGE(Dim_Satisfaction[JobSatisfaction])
+
+AvgMonthlyIncome = AVERAGE(Fact_Employee[MonthlyIncome])
+
+AvgTenureYears = AVERAGE(Dim_Employee[YearsAtCompany])
+
+HighPerformerAttritionRate = DIVIDE(CALCULATE(COUNTROWS(Fact_Employee), Fact_Employee[PerformanceRating] >=3, Fact_Employee[AttritionFlag] =1), CALCULATE(COUNTROWS(Fact_Employee), Fact_Employee[PerformanceRating] >=3))
+
+Income Gap = 
+VAR AvgIncomeLeft = CALCULATE(
+    AVERAGE(Fact_Employee[MonthlyIncome]),
+    Fact_Employee[AttritionFlag] = 1)
+VAR AvgIncomeStayed = CALCULATE(
+    AVERAGE(Fact_Employee[MonthlyIncome]),
+    Fact_Employee[AttritionFlag] = 0)
+VAR Gap = AvgIncomeLeft - AvgIncomeStayed
+RETURN Gap
+
+OverTimeAttritionRate = DIVIDE(CALCULATE(COUNTROWS(Fact_Employee), Dim_OverTime[OverTime] = "Yes", Fact_Employee[AttritionFlag] = 1), CALCULATE(COUNTROWS(Fact_Employee), Dim_OverTime[OverTime] = "Yes"))
+
+TotalActiveEmployees = CALCULATE(COUNTROWS(Fact_Employee), Fact_Employee[AttritionFlag] =0)
+
+TotalAttritions = CALCULATE(COUNTROWS(Fact_Employee), Fact_Employee[AttritionFlag] = 1)
+
+TotalEmployees = COUNTROWS(Fact_Employee)
